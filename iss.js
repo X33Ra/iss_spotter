@@ -16,6 +16,13 @@ const fetchMyIP = function(callback) {
       const errorMessage = `Unexpected status code: ${response.statusCode}`;
       callback(errorMessage, null);
       return;
+    } try {
+      /* If parsing is successful, we extract the ip */
+      const data = JSON.parse(body);
+      const ipAddress = data.ip;
+      callback(null, ipAddress);
+    } catch (parseError) {
+      callback(parseError, null);
     }
 
   });
