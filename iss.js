@@ -41,6 +41,10 @@ const fetchCoordsByIP = function(ip, callback) {
     if (error) {
       callback(error, null);
       return;
+    } if (response.statusCode !== 200) {
+      const errorMessage = `Unexpected status code: ${response.statusCode}`;
+      callback(errorMessage, null);
+      return;
     }
 
   });
