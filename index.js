@@ -1,4 +1,4 @@
-const { fetchMyIP, fetchCoordsByIP } = require('./iss');
+const { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes } = require('./iss');
 
 fetchMyIP((error, ip) => {
   if (error) {
@@ -15,11 +15,14 @@ fetchMyIP((error, ip) => {
     }
 
     console.log('It worked! Returned coordinates:', coords);
+
+    fetchISSFlyOverTimes(coords, (error, passTimes) => {
+      if (error) {
+        console.log("It didn't work!", error);
+        return;
+      }
+
+      console.log('It worked! Returned flyover times:', passTimes);
+    });
   });
 });
-
-
-
-/*Require it in index.js
-For now, call the function and pass in our (IPv4) IP address string as the first argument to the function
-For now, our callback can simply print out the values for error and data*/
