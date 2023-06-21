@@ -17,15 +17,21 @@ const fetchMyIP = function(callback) {
       callback(errorMessage, null);
       return;
     } try {
-      /* If parsing is successful, we extract the ip */
       const data = JSON.parse(body);
-      const ipAddress = data.ip;
-      callback(null, ipAddress);
+      const latitude = data.latitude;
+      const longitude = data.longitude;
+      callback(null, { latitude, longitude });
     } catch (parseError) {
       callback(parseError, null);
     }
-
   });
 };
 
+// API Call #2
+/* Our next function, fetchCoordsByIP will be
+ one that takes in an IP address and returns the latitude and longitude for it. */
+//Define the fetchCoordsByIP function in iss.js.
+/* It should take in two arguments: ip (string) and callback
+Add the function to the object properties being exported from iss.js
+For now, it can have an empty body and do nothing */
 module.exports = { fetchMyIP };
