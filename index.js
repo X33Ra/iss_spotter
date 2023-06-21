@@ -1,4 +1,3 @@
-// index.js
 const { fetchMyIP, fetchCoordsByIP } = require('./iss');
 
 fetchMyIP((error, ip) => {
@@ -15,7 +14,7 @@ fetchMyIP((error, ip) => {
       return;
     }
 
-    console.log('Returned Coordinates:', coords);
+    console.log('It worked! Returned coordinates:', coords);
   });
 });
 
