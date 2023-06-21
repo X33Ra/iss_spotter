@@ -45,6 +45,13 @@ const fetchCoordsByIP = function(ip, callback) {
       const errorMessage = `Unexpected status code: ${response.statusCode}`;
       callback(errorMessage, null);
       return;
+    } try {
+      const data = JSON.parse(body);
+      const latitude = data.latitude;
+      const longitude = data.longitude;
+      callback(null, { latitude, longitude });
+    } catch (parseError) {
+      callback(parseError, null);
     }
 
   });
