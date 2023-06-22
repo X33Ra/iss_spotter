@@ -48,8 +48,7 @@ const fetchCoordsByIP = function(ip, callback) {
 };
 
 const fetchISSFlyOverTimes = function(coords, callback) {
-  const url = `http://api.open-notify.org/iss-pass.json?lat=${coords.latitude}&lon=${coords.longitude}`;
-
+  const url = `https://iss-flyover.herokuapp.com/json/?lat=${coords.latitude}&lon=${coords.longitude}`;
   request(url, (error, response, body) => {
     if (error) {
       callback(error, null);
